@@ -25,7 +25,7 @@ steps:
         "test",
         "--",
         "--coverage"
-      ],
+      ]
     waitFor:
       buildinstaller
   # this step pushes the image to Container Registry
