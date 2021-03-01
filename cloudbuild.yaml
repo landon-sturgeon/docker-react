@@ -8,24 +8,24 @@ steps:
       [
         "build",
         "-t",
-        "gcr.io/docker-react/test",
+        "gcr.io/docker-react-306100/test",
         "-f",
         "Dockerfile",
         "."
       ]
   # this step pushes the image to Container Registry
-  - name: "gcr.io/cloud-builders-31/docker"
+  - name: "gcr.io/cloud-builders/docker"
     id: Push
     args:
       - "push"
-      - "gcr.io/docker-react/test"
+      - "gcr.io/docker-react-306100/test"
   # fires the jest tests of the app so far
   - name: 'gcr.io/cloud-builders/docker'
     id: test
     args:
       - "run"
       - "CI=true"
-      - "gcr.io/docker-react/test"
+      - "gcr.io/docker-react-306100/test"
       - "npm"
       - "run"
       - "test"
