@@ -12,6 +12,16 @@ steps:
         "Dockerfile",
         "."
       ]
+  # tests the jest tests of the app so far
+  - name: 'gcr.io/cloud-builders/docker'
+    id: test
+    args:
+      [
+        "run",
+        "gcr.io/$PROJECT_ID/docker-react-ci:$BRANCH_NAME-$SHORT_SHA",
+        "yarn",
+        "test"
+      ]
   # this step pushes the image to Container Registry
   - name: "gcr.io/cloud-builders/docker"
     id: Push
