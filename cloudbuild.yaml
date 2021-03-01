@@ -26,7 +26,7 @@ steps:
       [
         "run",
         "CI=true",
-        "gcr.io/$PROJECT_ID/docker-react-ci:$BRANCH_NAME-$SHORT_SHA",
+        "'gcr.io/$PROJECT_ID/docker-react-ci:$BRANCH_NAME-$SHORT_SHA'",
         "npm",
         "run",
         "test",
