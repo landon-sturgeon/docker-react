@@ -20,7 +20,6 @@ steps:
       [
         "run",
         "gcr.io/$PROJECT_ID/docker-react-ci:$BRANCH_NAME-$SHORT_SHA",
-        "CI=true",
         "yarn",
         "test",
         "--",
