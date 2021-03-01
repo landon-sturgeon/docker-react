@@ -23,13 +23,11 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     id: test
     args:
-      [
-        "run",
-        "CI=true",
-        "'gcr.io/$PROJECT_ID/docker-react-ci:$BRANCH_NAME-$SHORT_SHA'",
-        "npm",
-        "run",
-        "test",
-        "--",
-        "--coverage"
-      ]
+      - "run"
+      - "CI=true"
+      - "gcr.io/$PROJECT_ID/docker-react-ci:$BRANCH_NAME-$SHORT_SHA"
+      - "npm"
+      - "run"
+      - "test"
+      - "--"
+      - "--coverage"
