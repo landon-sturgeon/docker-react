@@ -14,7 +14,7 @@ steps:
         "."
       ]
   # this step pushes the image to Container Registry
-  - name: "gcr.io/cloud-builders/docker"
+  - name: "gcr.io/cloud-builders-31/docker"
     id: Push
     args:
       - "push"
