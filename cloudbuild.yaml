@@ -9,7 +9,7 @@ steps:
         "-t",
         "gcr.io/$PROJECT_ID/docker-react-ci:$BRANCH_NAME-$SHORT_SHA",
         "-f",
-        "Dockerfile"
+        "Dockerfile",
         "."
       ]
   # this step pushes the image to Container Registry
