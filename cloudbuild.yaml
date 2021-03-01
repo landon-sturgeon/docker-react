@@ -3,6 +3,7 @@
 steps:
   # build the docker image
   - name: gcr.io/cloud-builders/docker
+    id: buildinstaller
     args:
       [
         "build",
@@ -19,9 +20,14 @@ steps:
       [
         "run",
         "gcr.io/$PROJECT_ID/docker-react-ci:$BRANCH_NAME-$SHORT_SHA",
+        "CI=true",
         "yarn",
-        "test"
-      ]
+        "test",
+        "--",
+        "--coverage"
+      ],
+    waitFor:
+      buildinstaller
   # this step pushes the image to Container Registry
   - name: "gcr.io/cloud-builders/docker"
     id: Push
