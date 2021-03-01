@@ -8,7 +8,7 @@ steps:
       [
         "build",
         "-t",
-        "gcr.io/test",
+        "gcr.io/docker-react/test",
         "-f",
         "Dockerfile",
         "."
@@ -18,14 +18,14 @@ steps:
     id: Push
     args:
       - "push"
-      - "gcr.io/test"
+      - "gcr.io/docker-react/test"
   # fires the jest tests of the app so far
   - name: 'gcr.io/cloud-builders/docker'
     id: test
     args:
       - "run"
       - "CI=true"
-      - "gcr.io/test"
+      - "gcr.io/docker-react/test"
       - "npm"
       - "run"
       - "test"
