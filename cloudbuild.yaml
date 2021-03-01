@@ -1,0 +1,20 @@
+# Start cloudbuild
+# we just want to install and run tests for now
+steps:
+  # build the docker image
+  - name: gcr.io/cloud-builders/docker
+    args:
+      [
+        "build",
+        "-t",
+        "gcr.io/$PROJECT_ID/docker-react-ci:$BRANCH_NAME-$SHORT_SHA",
+        "-f",
+        "Dockerfile"
+        "."
+      ]
+  # this step pushes the image to Container Registry
+  - name: "gcr.io/cloud-builders/docker"
+    id: Push
+    args:
+      - "push"
+      - "gcr.io/$PROJECT_ID/docker-react-ci:$BRANCH_NAME-$SHORT_SHA"
