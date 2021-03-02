@@ -9,6 +9,8 @@ COPY . .
 
 RUN npm run build
 
+RUN CI=true npm run test -- --coverage
+
 # Run phase
 FROM nginx
 COPY --from=builder /usr/app/build /usr/share/nginx/html
