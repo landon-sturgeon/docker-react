@@ -8,7 +8,7 @@ steps:
       [
         "build",
         "-t",
-        "gcr.io/docker-react-306100/test",
+        "gcr.io/$PROJECT_ID/docker-react-ci:$BRANCH_NAME-$SHORT_SHA",
         "-f",
         "Dockerfile",
         "."
@@ -18,14 +18,15 @@ steps:
     id: Push
     args:
       - "push"
-      - "gcr.io/docker-react-306100/test"
+      - "gcr.io/$PROJECT_ID/docker-react-ci:$BRANCH_NAME-$SHORT_SHA"
   # fires the jest tests of the app so far
   - name: 'gcr.io/cloud-builders/docker'
     id: test
     args:
       - "run"
+      - "-e"
       - "CI=true"
-      - "gcr.io/docker-react-306100/test"
+      - "gcr.io/$PROJECT_ID/docker-react-ci:$BRANCH_NAME-$SHORT_SHA"
       - "npm"
       - "run"
       - "test"
