@@ -19,16 +19,3 @@ steps:
     args:
       - "push"
       - "gcr.io/$PROJECT_ID/docker-react-ci:$BRANCH_NAME-$SHORT_SHA"
-  # fires the jest tests of the app so far
-  - name: 'gcr.io/cloud-builders/docker'
-    id: test
-    args:
-      - "run"
-      - "-e"
-      - "CI=true"
-      - "gcr.io/$PROJECT_ID/docker-react-ci:$BRANCH_NAME-$SHORT_SHA"
-      - "npm"
-      - "run"
-      - "test"
-      - "--"
-      - "--coverage"
